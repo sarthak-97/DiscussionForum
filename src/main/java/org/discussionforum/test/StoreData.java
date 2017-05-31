@@ -46,11 +46,11 @@ public class StoreData {
 	    list2.add(ans4);  
 	      
 	    Question question1=new Question();  
-	    question1.setQname("What is Java?");  
+	   // question1.setQname("What is Java?");  
 	    question1.setAnswers(list1);  
 	      
 	    Question question2=new Question();  
-	    question2.setQname("What is Servlet?");  
+	   // question2.setQname("What is Servlet?");  
 	    question2.setAnswers(list2);  
 	    SessionFactory sessionFactory =  new Configuration().configure().buildSessionFactory(); 
 	 	   Session  session =	sessionFactory.openSession();

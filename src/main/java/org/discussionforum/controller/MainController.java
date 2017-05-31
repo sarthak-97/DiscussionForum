@@ -51,11 +51,11 @@ public class MainController {
 		    list2.add(ans4);  
 		      
 		    Question question1=new Question();  
-		    question1.setQname("What is Java?");  
+		    question1.setTitle("What is Java?");  
 		    question1.setAnswers(list1);  
 		      
 		    Question question2=new Question();  
-		    question2.setQname("What is Servlet?");  
+		    question2.setTitle("What is Servlet?");  
 		    question2.setAnswers(list2);  
 		    
 		 
@@ -65,6 +65,13 @@ public class MainController {
 		    session.getTransaction().commit();  
 		    session.close();  
 		    System.out.println("success");  
+		return model;
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView index() {
+
+		ModelAndView model = new ModelAndView("index");
 		return model;
 	}
 }

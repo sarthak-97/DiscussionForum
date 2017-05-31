@@ -22,7 +22,7 @@ public class Question {
 	@GeneratedValue
 	private int id;  
 	@Lob
-	private String qname;  
+	private String title;  
 	@OneToMany(cascade = {CascadeType.ALL})
 	private List<Answer> answers;
 	public int getId() {
@@ -31,11 +31,12 @@ public class Question {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getQname() {
-		return qname;
+	
+	public String getTitle() {
+		return title;
 	}
-	public void setQname(String qname) {
-		this.qname = qname;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public List<Answer> getAnswers() {
 		return answers;

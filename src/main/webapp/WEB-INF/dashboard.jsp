@@ -1,5 +1,7 @@
-
-<!DOCTYPE html>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -43,79 +45,31 @@
       <a href="a" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div id="modal1" class="modal">
-				<div class="modal-content">
-					<div class="card col s6 offset-s3"
-						style="margin-top: 20px; padding: 20px;">
-						<div class="card-content" align="center">
-							<p style="font-size: 30px; color: #0572d2;">GET STARTED</p>
-						</div>
-						<div class="card-tabs">
-							<ul class="tabs tabs-fixed-width"
-								style="background: rgba(255, 255, 255, .7);">
-								<li class="tab" onclick="indicator();"><a class="active"
-									href="#login_form" style="color: #1E88E5;">Login</a></li>
-								<li class="tab" onclick="indicator();"><a
-									href="#signup_form" style="color: #1E88E5;">Sign Up</a></li>
-							</ul>
-						</div>
-						<div class="card-content " id="cards" style="margin-top: 0;">
-							<div id="login_form">
-								<form action="login" method="POST">
-									<div class="input-field col s10 offset-s1">
-										<input type="text" id="username" name="id" required> <label
-											for="email">Email</label>
-									</div>
-
-									<div class="input-field col s10 offset-s1">
-										<input type="password" id="pass" name="pass" required>
-										<label for="pass">Password</label>
-									</div>
-									<div align="center">
-										<button type="submit"
-											class="waves-effect waves-light btn blue"
-											style="margin-bottom: 0;">Submit</button>
-									</div>
-								</form>
-							</div>
-							<div id="signup_form">
-								<form action="signup" method="post">
-									<div class="input-field col s10 offset-s1">
-										<input type="text" name="name" id="team" required>
-										<label for="team">Name</label>
-									</div>
-									<div class="input-field col s10 offset-s1">
-										<input type="text" name="email"
-											id="participant1_name" required> <label
-											for="participant1_name">Email</label>
-									</div>
-									
-									
-									<div class="input-field col s10 offset-s1">
-										<input type="text" name="contact"
-											id="participant2_name" required> <label
-											for="participant2_name">Contact</label>
-									</div>
-									
-									<div class="input-field col s10 offset-s1">
-										<input type="password" name="password" id="password" required>
-										<label for="password">Password</label>
-									</div>
-									<div align="center">
-										<button type="submit"
-											class="waves-effect waves-light btn blue"
-											style="margin-bottom: 0;">Submit</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-  <!--  Scripts-->
   
-  <script src="js/init.js"></script>
+  <div id="main">
+		<div id="ques" class="z-depth-1" align="center">
+			<h2>NEW QUESTIONS</h2>
+			<%
+				int i = 1;
+			%>
+			<table class=" bordered highlight ">
+
+				<c:forEach var="question" items="${ques}">
+					<tr>
+						<td id="index"><%=i%>.</td>
+						<td style="min-width: 750px;"><a
+							href="ans?id=${question.id}"><c:out
+									value="${question.qname}" /></a></td>
+							
+					</tr>
+					<%
+						i = i + 1;
+					%>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+   <script src="js/init.js"></script>
   <script>
 	function indicator() {
 		$(".indicator").css("background", "#1E88E5");

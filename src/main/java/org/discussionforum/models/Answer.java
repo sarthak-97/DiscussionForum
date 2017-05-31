@@ -15,18 +15,20 @@ public class Answer {
 	
 	@Id
 	@GeneratedValue
-	private int id;  
+	private int aid; 
+	private int qid;
 	@Lob
 	private String answername;  
 	private String postedBy;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getAnswername() {
 		return answername;
+	}
+	public int getAid() {
+		return aid;
+	}
+	public void setAid(int aid) {
+		this.aid = aid;
 	}
 	public void setAnswername(String answername) {
 		this.answername = answername;
@@ -36,6 +38,12 @@ public class Answer {
 	}
 	public void setPostedBy(String postedBy) {
 		this.postedBy = postedBy;
+	}
+	public int getQid() {
+		return qid;
+	}
+	public void setQid(int qid) {
+		this.qid = qid;
 	}  
 
 }
