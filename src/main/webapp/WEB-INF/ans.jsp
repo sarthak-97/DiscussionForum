@@ -9,6 +9,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>home</title>
+  <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+  
 <meta name="google-signin-client_id" content="30081514308-nsdkis6qpuda4f9vr2mb2d3aeg0otqgq.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -86,9 +88,43 @@
 				</c:forEach>
 			</table>
 		</div>
-	</div>
-
+	
+	
+	<div id="ques" class="z-depth-1" align="center">
+	 <form name=frm action="addans" method="post">
+         
+        
+           <div class="input-field col s6">
+			<font size="10">YOUR ANSWER</font>	<textarea id="constraints" name="constraints" required> </textarea>
+				</div>
+         <div align="center">
+							<button type="submit" class="waves-effect waves-light btn blue"
+								style="margin-bottom: 0;">Submit</button>
+						</div>
+     
+          </form>
+</div>
+</div>
 	<!--  Scripts-->
+	<script>
+          CKEDITOR.replace( 'constraints', {
+        	// Define the toolbar groups as it is a more accessible solution.
+  			toolbarGroups: [
+  				{"name":"basicstyles","groups":["basicstyles"]},
+  				{"name":"links","groups":["links"]},
+  				{"name":"paragraph","groups":["list","blocks"]},
+  				{"name":"document","groups":["mode"]},
+  				{"name":"insert","groups":["insert"]},
+  				{"name":"styles","groups":["styles"]},
+  				{"name":"about","groups":["about"]}
+  			],
+  			// Remove the redundant buttons from toolbar groups defined above.
+  			removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar',
+          
+  			width: '50%',
+  			height: '60%'
+  		} );
+          </script>
   
   <script src="js/init.js"></script>
   <script>
