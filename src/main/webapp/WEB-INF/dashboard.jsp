@@ -1,7 +1,9 @@
+
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -45,10 +47,9 @@
       <a href="a" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  
-  <div id="main">
+<div id="main">
 		<div id="ques" class="z-depth-1" align="center">
-			<h2>NEW QUESTIONS</h2>
+			<h2>QUESTIONS</h2>
 			<%
 				int i = 1;
 			%>
@@ -59,8 +60,7 @@
 						<td id="index"><%=i%>.</td>
 						<td style="min-width: 750px;"><a
 							href="ans?id=${question.id}"><c:out
-									value="${question.qname}" /></a></td>
-							
+									value="${question.title}" /></a></td>
 					</tr>
 					<%
 						i = i + 1;
@@ -69,7 +69,10 @@
 			</table>
 		</div>
 	</div>
-   <script src="js/init.js"></script>
+
+	<!--  Scripts-->
+  
+  <script src="js/init.js"></script>
   <script>
 	function indicator() {
 		$(".indicator").css("background", "#1E88E5");

@@ -77,7 +77,11 @@
 					<tr>
 						<td id="index"><%=i%>.</td>
 						<td style="min-width: 750px;"><c:out
-									value="  ${question.answername} POSTED BY ${question.postedBy}" /></td>
+									value="  ${question.answername} POSTED BY ${question.postedBy}" escapeXml="false"/></td>
+						<td><a
+							href="edit?id=${question.aid}"><c:out value="edit"/></a></td>			
+					<td><a
+							href="del?id=${question.aid}"><c:out value="delete"/></a></td>
 					</tr>
 					</c:if>
 					<%
@@ -95,8 +99,9 @@
          
         
            <div class="input-field col s6">
-			<font size="10">YOUR ANSWER</font>	<textarea id="constraints" name="constraints" required> </textarea>
+			<font size="10">YOUR ANSWER</font>	<textarea id="constraints" name="userans" required> </textarea>
 				</div>
+				<input type=text name="id" value="${qid}">
          <div align="center">
 							<button type="submit" class="waves-effect waves-light btn blue"
 								style="margin-bottom: 0;">Submit</button>

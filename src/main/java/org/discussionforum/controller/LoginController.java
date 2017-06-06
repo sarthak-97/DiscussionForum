@@ -58,6 +58,7 @@ public class LoginController {
 		if (userdet != null) {
 					if (userdet.getPassword().equals(password)) {
 							httpSession.setAttribute("SESSION_email", userdet.getEmail());
+							httpSession.setAttribute("SESSION_name", userdet.getName());
 						
 							if((String) httpSession.getAttribute("SESSION_email")!=null){
 								model = new ModelAndView("dashboard");

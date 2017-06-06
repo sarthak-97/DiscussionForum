@@ -28,6 +28,7 @@ public class CrudController {
 	private SessionFactory sessionFactory;
 	private UserDet userdet;
 	private Question question;
+	private Answer answer;
 	
 	
 	@RequestMapping(value = "/ques", method = RequestMethod.GET)
@@ -52,10 +53,37 @@ public class CrudController {
 		question = (Question) session.get(Question.class, quesid);
 		
 		List<Answer> ans = session.createCriteria(Answer.class).list();
-		
+		Answer  userans= new Answer();
+	
 		model.addObject("ans",ans);
 		model.addObject("qid",quesid);
 		model.addObject("ques",question.getTitle());
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/addans", method = RequestMethod.POST)
+	public ModelAndView addans(HttpSession httpSession, @RequestParam("userans") String answer, @RequestParam("id") String qid ) {
+		Session session = sessionFactory.openSession();
+		ModelAndView model=new ModelAndView("ans");
+		session.beginTransaction();
+	     Answer  userans= new Answer();
+	     userans.setAnswername(answer);
+	     userans.setQid(Integer.parseInt(qid));
+	     userans.setPostedBy((String)httpSession.getAttribute("SESSION_name"));   
+		 
+	     session.save(userans);
+	     session.getTransaction().commit();
+	     
+	     question = (Question) session.get(Question.class, Integer.parseInt( qid));
+			
+		List<Answer> ans = session.createCriteria(Answer.class).list();
+		
+
+		model.addObject("ans",ans);
+		model.addObject("qid",qid);
+		model.addObject("ques",question.getTitle());
+		model.addObject("invalid","ans successfully submitted");
 		return model;
 	}
 	
