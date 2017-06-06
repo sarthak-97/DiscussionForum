@@ -36,7 +36,7 @@
       <a id="logo-container" href="#" class="brand-logo"><span style="font-family: "Comic Sans MS";">DISCUSSION FORUM</span></a>
   
       <ul class="right hide-on-med-and-down">
-     <li><a href="#modal1">Login</a></li>
+     <li><a href="/logout">Logout</a></li>
         <li><a href="a">About</a></li>
         <li><a href="a">Contact Us</a></li>
       </ul>
@@ -63,10 +63,11 @@
 
 
 				<c:forEach var="question" items="${ans}">
-				 
+			
 			 <c:set var = "quesid" scope = "session" value = "${qid}"/>
 			 <c:set var = "questionid" scope = "session" value = "${question.qid}"/>
-			 
+			 <c:set var = "pb" scope = "session" value = "${uname}" />
+			 <c:set var = "posted" scope = "session" value = "${question.postedBy}"/> 
 				  
 			<c:if test="${quesid==questionid}" >
 			
@@ -78,10 +79,18 @@
 						<td id="index"><%=i%>.</td>
 						<td style="min-width: 750px;"><c:out
 									value="  ${question.answername} POSTED BY ${question.postedBy}" escapeXml="false"/></td>
+									
+					<c:if test="${pb==posted}" >				
 						<td><a
 							href="edit?id=${question.aid}"><c:out value="edit"/></a></td>			
 					<td><a
 							href="del?id=${question.aid}"><c:out value="delete"/></a></td>
+							</c:if>
+							
+					<c:if test="${pb!=posted}" >				
+						<td></td>			
+					<td></td>
+							</c:if>		
 					</tr>
 					</c:if>
 					<%

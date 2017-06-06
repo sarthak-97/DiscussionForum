@@ -58,7 +58,7 @@ public class CrudController {
 		model.addObject("ans",ans);
 		model.addObject("qid",quesid);
 		model.addObject("ques",question.getTitle());
-		
+		model.addObject("uname",(String)httpSession.getAttribute("SESSION_name"));
 		return model;
 	}
 	
@@ -82,6 +82,7 @@ public class CrudController {
 
 		model.addObject("ans",ans);
 		model.addObject("qid",qid);
+		model.addObject("uname",(String)httpSession.getAttribute("SESSION_name"));
 		model.addObject("ques",question.getTitle());
 		model.addObject("invalid","ans successfully submitted");
 		return model;
